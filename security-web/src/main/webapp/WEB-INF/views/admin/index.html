@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title data-th-text="#{admin.page.title}">Title</title>
+</head>
+
+<body>
+
+<div th:replace="fragments/fg-header :: header"></div>
+<div id="wrapper">                <!-- /#wrapper -->
+
+    <div data-th-replace="fragments/fg-admin :: top-nav"></div>
+
+    <div data-th-replace="fragments/fg-admin :: vert-nav"></div>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <h1 data-th-text="#{admin.page.title}">Title</h1>
+                <p>
+                    <a href="strategy/">Strategy list</a><br />
+                </p>
+
+
+            </div>  <!-- /.col-lg-12 -->
+        </div>      <!-- /.row -->
+    </div>          <!-- page wrapper -->
+</div>              <!-- /#wrapper -->
+
+</body>
+</html>

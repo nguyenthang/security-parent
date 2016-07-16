@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>SB-Admin</title>
+</head>
+
+<body>
+<div id="wrapper">
+
+    <nav data-th-fragment="top-nav" class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" data-th-text="#{admin.page.title}"> </a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right" data-th-with="currentUser=${#httpServletRequest.userPrincipal?.name}">
+            <li><a href="#" data-th-href="@{/}">Home</a></li>
+            <li><a href="#" data-th-href="@{/admin}">Admin</a></li>
+            <li class="dropdown" data-th-if="${currentUser != null}">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>
+                    <font color="#049cbd" th:text="'&nbsp;' + ${currentUser} + '&nbsp;&nbsp;'">&nbsp;Dave&nbsp;&nbsp;</font>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a></li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" th:href="@{/logout}"><i class="fa fa-sign-out fa-fw"></i><span data-th-text="#{admin.page.link.logout}"></span> </a></li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>  <!-- /.navbar-top-links -->
+    </nav>     <!-- /.navbar-static-top -->
+
+    <nav data-th-fragment="vert-nav" class="navbar-default navbar-static-side" >
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="/roles"><i class="fa fa-lock fa-fw"></i> Roles</a>
+                </li>
+                <li>
+                    <a href="/users"><i class="fa fa-user fa-fw"></i> Users</a>
+                </li>
+                <li>
+                    <a href="/accounts"><i class="fa fa-tasks fa-fw"></i> Accounts</a>
+                </li>
+                <li>
+                    <a href="/strategy"><i class="fa fa-gears fa-fw"></i> Strategies<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/strategy/list">Strategy List</a>
+                        </li>
+                        <li>
+                            <a href="/strategy/settings">Strategy Settings</a>
+                        </li>
+                        <li>
+                            <a href="/strategy/run">Strategy Run</a>
+                        </li>
+                        <li>
+                            <a href="/strategy/account">Strategy Account</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="/trade/details"><i class="fa fa-tachometer fa-fw"></i> Trade Details<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">Orders</a>
+                        </li>
+                        <li>
+                            <a href="#">Fills</a>
+                        </li>
+                        <li>
+                            <a href="#">Transactions</a>
+                        </li>
+                        <li>
+                            <a href="#">Positions</a>
+                        </li>
+                        <li>
+                            <a href="#">Position Details</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li class="active">
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Trade Summaries<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">Trade Summary</a>
+                        </li>
+                        <li>
+                            <a href="#">Trade Details</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+            </ul> <!-- /#side-menu -->
+        </div>    <!-- /.sidebar-collapse -->
+    </nav>        <!-- /.navbar-static-side -->
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Blank</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+</body>
+</html>

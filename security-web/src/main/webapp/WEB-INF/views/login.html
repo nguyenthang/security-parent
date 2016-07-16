@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-th-text="#{login.page.title}">Login page</title>
+
+    <link rel="stylesheet" type="text/css" href="../../resources/bootstrap-3.6/css/bootstrap.css" th:href="@{/resources/bootstrap-3.6/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" href="../../resources/font-awesome-4.6.3/css/font-awesome.css" th:href="@{/resources/font-awesome-4.6.3/css/font-awesome.css}">
+    <link rel="stylesheet" href="../../resources/css/login.css" th:href="@{/resources/css/login.css}" type="text/css">
+</head>
+<body>
+<div id="login_wrapper">
+    <div class="login_container">
+        <div class="login_card">
+            <div class="login_form">
+                <div class="panel panel-default">
+                    <div class="panel panel-body">
+
+                        <form name="f" th:action="@{/login}" method="post" class="form-horizontal">
+
+                                <div th:if="${param.error} != null" class="alert alert-danger">
+                                    Invalid username and password
+                                </div>
+                                <div th:if="${param.logout} != null" class="alert alert-warning">
+                                    You have been logged out
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" data-th-text="#{login.page.label.username}"></label>
+                                    <input type="text" class="form-control" placeholder="Username" name="ssoId" id="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" data-th-text="#{login.page.label.password}"></label>
+                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+                                </div>
+                                <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-lg btn-success btn-block" data-th-text="#{login.page.button.login}"> </button>
+                                </div>
+
+                        </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
